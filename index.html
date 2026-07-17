@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PANDEF Diaspora — Pan Niger Delta Forum</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+--navy:#0E1B3D;
+--forest:#0B6B3A;
+--orange:#E8641D;
+--blue:#1E9DBE;
+--lime:#8FC93A;
+--gold:#F0A81E;
+--cream:#F7F4EC;
+--paper:#FFFFFE;
+--ink:#161B22;
+--ink-soft:#4B5262;
+--line: rgba(14,27,61,0.12);
+--radius: 2px;
+}
+*{box-sizing:border-box; margin:0; padding:0;}
+html{scroll-behavior:smooth;}
+body{
+background:var(--cream);
+color:var(--ink);
+font-family:'Inter', sans-serif;
+line-height:1.6;
+overflow-x:hidden;
+}
+::selection{ background:var(--gold); color:var(--navy); }
+h1,h2,h3,h4{
+font-family:'Fraunces', serif;
+color:var(--navy);
+font-weight:600;
+letter-spacing:-0.01em;
+}
+.eyebrow{
+font-family:'IBM Plex Mono', monospace;
+font-size:0.72rem;
+letter-spacing:0.16em;
+text-transform:uppercase;
+color:var(--forest);
+display:flex;
+align-items:center;
+gap:10px;
+margin-bottom:18px;
+font-weight:500;
+}
+.eyebrow::before{
+content:'';
+width:26px; height:2px;
+background:var(--orange);
+display:inline-block;
+}
+.wrap{ max-width:1180px; margin:0 auto; padding:0 40px; }
+a{ color:inherit; text-decoration:none; }
+/* ---------- HEADER ---------- */
+header{
+position:sticky; top:0; z-index:100;
+background:rgba(247,244,236,0.92);
+backdrop-filter:blur(10px);
+border-bottom:1px solid var(--line);
+}
+.navrow{
+display:flex; align-items:center; justify-content:space-between;
+padding:16px 40px;
+max-width:1180px; margin:0 auto;
+}
+.brand{ display:flex; align-items:center; gap:12px; }
+.brand-mark{
+width:38px; height:38px; position:relative; flex-shrink:0;
+}
+.brand-text{ line-height:1.1; }
+.brand-text .pandef{
+font-family:'Fraunces', serif; font-weight:700; font-size:1.05rem; color:var(--navy); letter-spacing:0.01em;
+}
+.brand-text .diaspora{
+font-family:'IBM Plex Mono', monospace; font-size:0.62rem; letter-spacing:0.12em; color:var(--forest); text-transform:uppercase;
+}
+nav ul{ list-style:none; display:flex; gap:32px; }
+nav a{ font-size:0.88rem; color:var(--navy); font-weight:500; position:relative; padding:4px 0;}
+nav a::after{
+content:''; position:absolute; left:0; bottom:0; width:0; height:1.5px; background:var(--orange);
+transition:width .25s ease;
+}
+nav a:hover::after{ width:100%; }
+.nav-cta{
+background:var(--navy); color:var(--cream) !important; padding:9px 20px; border-radius:var(--radius);
+font-size:0.82rem; font-weight:600;
+}
+.nav-cta::after{ display:none; }
+.menu-btn{ display:none; background:none; border:none; cursor:pointer; }
+@media (max-width: 880px){
+nav ul{ display:none; }
+.menu-btn{ display:block; }
+}
+/* ---------- HERO ---------- */
+.hero{
+position:relative;
+padding:100px 0 80px;
+overflow:hidden;
+}
+.hero-grid{
+display:grid; grid-template-columns:1.05fr 0.95fr; gap:60px; align-items:center;
+}
+.hero h1{
+font-size:clamp(2.4rem, 4.6vw, 3.7rem);
+line-height:1.05;
+margin-bottom:24px;
+}
+.hero h1 em{ font-style:italic; color:var(--orange); }
+.hero p.lead{
+font-size:1.08rem; color:var(--ink-soft); max-width:520px; margin-bottom:34px;
+}
+.hero-ctas{ display:flex; gap:16px; flex-wrap:wrap; margin-bottom:40px;}
+.btn{
+padding:13px 26px; border-radius:var(--radius); font-weight:600; font-size:0.92rem;
+display:inline-flex; align-items:center; gap:8px; transition:transform .2s ease, box-shadow .2s ease;
+}
+.btn-primary{ background:var(--orange); color:#fff; }
+.btn-primary:hover{ transform:translateY(-2px); box-shadow:0 10px 20px rgba(232,100,29,0.28);}
+.btn-outline{ border:1.5px solid var(--navy); color:var(--navy); }
+.btn-outline:hover{ background:var(--navy); color:#fff; }
+.hero-stats{ display:flex; gap:40px; }
+.hero-stats div strong{
+display:block; font-family:'Fraunces', serif; font-size:1.9rem; color:var(--navy);
+}
+.hero-stats div span{ font-size:0.78rem; color:var(--ink-soft); font-family:'IBM Plex Mono', monospace; letter-spacing:0.03em;}
+/* mosaic signature */
+.mosaic-wrap{ position:relative; }
+.mosaic-caption{
+position:absolute; bottom:-38px; left:0; right:0; text-align:center;
+font-family:'IBM Plex Mono', monospace; font-size:0.7rem; color:var(--ink-soft); letter-spacing:0.08em;
+}
+.mosaic-piece{ cursor:pointer; transition: transform .35s ease, filter .35s ease; transform-origin:center; }
+.mosaic-piece:hover{ transform:scale(1.045); filter:brightness(1.08); }
+.mosaic-tooltip{
+font-family:'IBM Plex Mono', monospace; font-size:11px; fill:var(--navy); opacity:0; transition:opacity .2s ease;
+pointer-events:none;
+}
+.mosaic-piece:hover + .mosaic-tooltip,
+.mosaic-group:hover .mosaic-tooltip{ opacity:1; }
+/* ---------- SECTION DIVIDER (river line) ---------- */
+.river{ width:100%; height:36px; display:block; }
+section{ padding:90px 0; position:relative; }
+.band-cream{ background:var(--cream); }
+.band-paper{ background:var(--paper); }
+.band-navy{ background:var(--navy); color:#EDEFF5; }
+.band-navy h2{ color:#fff; }
+.band-navy .eyebrow{ color:var(--lime); }
+.band-navy .eyebrow::before{ background:var(--gold); }
+.section-head{ max-width:680px; margin-bottom:56px; }
+.section-head h2{ font-size:clamp(1.8rem, 3vw, 2.5rem); }
+.section-head p{ color:var(--ink-soft); margin-top:16px; font-size:1.02rem; }
+.band-navy .section-head p{ color:#B9C0D6; }
+/* ---------- ABOUT ---------- */
+.about-grid{ display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:start; }
+.about-grid p{ color:var(--ink-soft); margin-bottom:18px; }
+.pillar-list{ list-style:none; display:flex; flex-direction:column; gap:22px; }
+.pillar-list li{ display:flex; gap:16px; align-items:flex-start; }
+.pillar-num{
+font-family:'IBM Plex Mono', monospace; font-size:0.78rem; color:var(--orange); font-weight:600; padding-top:3px; flex-shrink:0; width:26px;
+}
+.pillar-list h4{ font-size:1rem; margin-bottom:4px; }
+.pillar-list span{ color:var(--ink-soft); font-size:0.92rem; }
+/* ---------- STATES ---------- */
+.states-grid{
+display:grid; grid-template-columns:repeat(3, 1fr); gap:1px; background:var(--line);
+border:1px solid var(--line);
+}
+.state-card{
+background:var(--paper); padding:28px 26px; position:relative; overflow:hidden;
+}
+.state-swatch{ width:34px; height:34px; border-radius:50%; margin-bottom:18px; }
+.state-card h4{ font-size:1.08rem; margin-bottom:6px; }
+.state-card span{ font-size:0.82rem; color:var(--ink-soft); font-family:'IBM Plex Mono', monospace; }
+@media (max-width: 780px){ .states-grid{ grid-template-columns:repeat(2,1fr); } }
+@media (max-width: 520px){ .states-grid{ grid-template-columns:1fr; } }
+/* ---------- STRUCTURE ---------- */
+.structure-grid{ display:grid; grid-template-columns:repeat(3, 1fr); gap:28px; }
+.structure-card{
+border:1px solid var(--line); padding:32px 28px; background:var(--cream); border-radius:var(--radius);
+}
+.structure-card .eyebrow{ margin-bottom:14px; }
+.structure-card h3{ font-size:1.2rem; margin-bottom:10px; }
+.structure-card p{ color:var(--ink-soft); font-size:0.94rem; }
+@media (max-width: 880px){ .structure-grid{ grid-template-columns:1fr; } }
+/* ---------- CHAPTERS / MAP ---------- */
+.chapters-wrap{ display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; }
+.chapter-list{ list-style:none; display:flex; flex-direction:column; gap:0; }
+.chapter-list li{
+display:flex; justify-content:space-between; padding:18px 0; border-bottom:1px solid rgba(255,255,255,0.14);
+font-size:0.95rem;
+}
+.chapter-list li span:last-child{ color:var(--lime); font-family:'IBM Plex Mono', monospace; font-size:0.82rem; }
+/* ---------- INVOLVED / FORM ---------- */
+.involve-grid{ display:grid; grid-template-columns:1fr 1fr; gap:60px; }
+.form-card{
+background:var(--paper); border:1px solid var(--line); padding:40px; border-radius:var(--radius);
+}
+.form-card label{ display:block; font-size:0.8rem; font-family:'IBM Plex Mono', monospace; letter-spacing:0.04em; color:var(--navy); margin-bottom:8px; }
+.form-row{ margin-bottom:22px; }
+.form-card input, .form-card select{
+width:100%; padding:12px 14px; border:1px solid var(--line); border-radius:var(--radius);
+font-family:'Inter', sans-serif; font-size:0.94rem; background:var(--cream);
+}
+.form-card input:focus, .form-card select:focus{ outline:2px solid var(--orange); outline-offset:1px; }
+.form-two{ display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+.btn-submit{
+width:100%; background:var(--forest); color:#fff; border:none; padding:14px; border-radius:var(--radius);
+font-weight:600; font-size:0.95rem; cursor:pointer; transition:background .2s ease;
+}
+.btn-submit:hover{ background:#08532c; }
+.form-note{ font-size:0.78rem; color:var(--ink-soft); margin-top:14px; }
+/* ---------- FOOTER ---------- */
+footer{ background:var(--navy); color:#B9C0D6; padding:64px 0 30px; }
+.footer-grid{ display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:40px; margin-bottom:50px; }
+.footer-brand .brand-text .pandef{ color:#fff; }
+.footer-brand p{ margin-top:16px; font-size:0.88rem; max-width:280px; color:#96A0BE; }
+footer h5{ color:#fff; font-family:'IBM Plex Mono', monospace; font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:18px; }
+footer ul{ list-style:none; display:flex; flex-direction:column; gap:12px; }
+footer ul a{ font-size:0.9rem; color:#B9C0D6; }
+footer ul a:hover{ color:var(--gold); }
+.footer-bottom{
+border-top:1px solid rgba(255,255,255,0.12); padding-top:26px; display:flex; justify-content:space-between;
+font-size:0.8rem; color:#7B87AA; flex-wrap:wrap; gap:12px;
+}
+@media (max-width: 880px){ .footer-grid{ grid-template-columns:1fr 1fr; } .about-grid, .chapters-wrap, .involve-grid{ grid-template-columns:1fr; } .hero-grid{ grid-template-columns:1fr; } }
+.reveal{ opacity:0; transform:translateY(18px); transition:opacity .7s ease, transform .7s ease; }
+.reveal.in{ opacity:1; transform:translateY(0); }
+@media (prefers-reduced-motion: reduce){
+.reveal{ opacity:1; transform:none; transition:none; }
+.mosaic-piece{ transition:none; }
+}
+</style>
+</head>
+<body>
+<header>
+<div class="navrow">
+<div class="brand">
+<svg class="brand-mark" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+<path d="M40 8 C48 8 58 14 58 24 C58 32 52 36 52 42 L36 42 C34 34 30 30 24 30 C18 30 14 36 16 44 L34 50 L30 62 C22 62 16 68 18 76 L44 82 C52 82 58 76 56 68 L60 50 C66 46 70 40 70 32 L88 40 C90 48 86 56 78 58 L74 70 C80 74 82 82 78 88 L48 88 C40 88 34 82 36 74 L28 68 C20 66 16 58 20 50 L14 46 C8 42 8 32 14 26 C20 20 30 20 34 26 Z" fill="var(--lime)"/>
+<path d="M40 8 C48 8 58 14 58 24 C58 32 52 36 52 42 L36 42 C34 34 30 30 24 30 C18 30 14 36 16 44 L14 46 C8 42 8 32 14 26 C20 20 30 20 34 26 Z" fill="var(--orange)"/>
+<path d="M16 44 L34 50 L30 62 C22 62 16 68 18 76 L14 46 Z" fill="var(--blue)"/>
+<path d="M28 68 L44 82 C40 82 36 82 34 78 L28 68 Z" fill="var(--gold)"/>
+<rect x="46" y="14" width="3" height="20" fill="#1A2233"/>
+<rect x="42" y="24" width="12" height="3" fill="#1A2233"/>
+</svg>
+<div class="brand-text">
+<div class="pandef">PANDEF <span style="color:var(--forest)">Diaspora</span></div>
+<div class="diaspora">Pan Niger Delta Forum</div>
+</div>
+</div>
+<nav>
+<ul>
+<li><a href="#mission">Mission</a></li>
+<li><a href="#states">The Nine States</a></li>
+<li><a href="#structure">Structure</a></li>
+<li><a href="#chapters">Chapters</a></li>
+<li><a href="#involve" class="nav-cta">Join the Council</a></li>
+</ul>
+</nav>
+</div>
+</header>
+
+<section class="hero">
+<div class="wrap hero-grid">
+<div>
+<div class="eyebrow">PANDEF Diaspora Coordinating Council · Est. Ottawa, Canada</div>
+<h1>Nine states.<br>One <em>Delta</em> voice,<br>carried across the world.</h1>
+<p class="lead">The global diaspora wing of the Pan Niger Delta Forum — mobilising Niger Delta sons and daughters abroad in service of peace, equity, and development back home.</p>
+<div class="hero-ctas">
+<a href="#mission" class="btn btn-primary">Read Our Mission →</a>
+<a href="#involve" class="btn btn-outline">Join the Council</a>
+</div>
+<div class="hero-stats">
+<div><strong>9</strong><span>NIGER DELTA STATES</span></div>
+<div><strong>2016</strong><span>PANDEF FOUNDED</span></div>
+<div><strong>Global</strong><span>DIASPORA REACH</span></div>
+</div>
+</div>
+<div class="mosaic-wrap">
+<svg viewBox="0 0 420 420" width="100%" role="img" aria-label="Mosaic map representing the united Niger Delta states">
+<g class="mosaic-group">
+<path class="mosaic-piece" d="M150 20 L260 30 L270 110 L230 150 L160 140 L120 90 Z" fill="var(--orange)"/>
+<path class="mosaic-piece" d="M60 110 L120 90 L160 140 L140 190 L80 210 L40 160 Z" fill="var(--blue)"/>
+<path class="mosaic-piece" d="M160 140 L230 150 L260 200 L220 250 L170 230 L140 190 Z" fill="var(--forest)"/>
+<path class="mosaic-piece" d="M230 150 L270 110 L340 130 L350 200 L300 230 L260 200 Z" fill="var(--gold)"/>
+<path class="mosaic-piece" d="M300 230 L350 200 L390 250 L370 320 L320 310 L280 270 Z" fill="var(--lime)"/>
+<path class="mosaic-piece" d="M170 230 L220 250 L280 270 L260 330 L200 340 L150 300 Z" fill="var(--forest)" opacity="0.85"/>
+<path class="mosaic-piece" d="M80 210 L140 190 L170 230 L150 300 L100 320 L50 270 Z" fill="var(--orange)" opacity="0.85"/>
+<path class="mosaic-piece" d="M100 320 L150 300 L200 340 L190 390 L120 390 L80 360 Z" fill="var(--gold)" opacity="0.9"/>
+<path class="mosaic-piece" d="M190 390 L200 340 L260 330 L300 370 L270 400 L210 400 Z" fill="var(--blue)" opacity="0.9"/>
+<g transform="translate(170,150)">
+<rect x="0" y="-70" width="4" height="70" fill="#0E1B3D"/>
+<rect x="-14" y="-20" width="32" height="5" fill="#0E1B3D"/>
+<rect x="-8" y="-40" width="20" height="5" fill="#0E1B3D"/>
+</g>
+</g>
+</svg>
+<div class="mosaic-caption">EACH FRAGMENT, A STATE · TOGETHER, THE DELTA</div>
+</div>
+</div>
+</section>
+
+<svg class="river" viewBox="0 0 1200 40" preserveAspectRatio="none"><path d="M0 20 Q 300 0 600 20 T 1200 20" fill="none" stroke="var(--line)" stroke-width="1"/></svg>
+
+<section class="band-paper" id="mission">
+<div class="wrap">
+<div class="section-head reveal">
+<div class="eyebrow">Who We Are</div>
+<h2>An apex voice, extended across the diaspora.</h2>
+<p>PANDEF — the Pan Niger Delta Forum — is the umbrella socio-political body of the Niger Delta peoples, established in August 2016 to foster inter-ethnic harmony, peace, security and development across the region. PANDEF Diaspora carries that same mandate to Niger Delta communities living abroad.</p>
+</div>
+<div class="about-grid">
+<div class="reveal">
+<p>Through the PANDEF Diaspora Coordinating Council (PDCC), Niger Delta descendants around the world stay connected to home — organising, advocating, and channelling resources and expertise back into the region's development.</p>
+<p>We work in step with the National Secretariat and Board of Trustees in Nigeria, serving as a bridge between the homeland and its global community: a second front for the same cause.</p>
+</div>
+<ul class="pillar-list reveal">
+<li><span class="pillar-num">01</span><div><h4>Peace &amp; Security</h4><span>Standing for stability and inter-ethnic harmony across the Niger Delta region.</span></div></li>
+<li><span class="pillar-num">02</span><div><h4>Equity &amp; Restructuring</h4><span>Advocating fair resource control and a more balanced federation.</span></div></li>
+<li><span class="pillar-num">03</span><div><h4>Regional Development</h4><span>Supporting infrastructure, education and economic growth at home.</span></div></li>
+<li><span class="pillar-num">04</span><div><h4>Diaspora Engagement</h4><span>Connecting Niger Delta communities abroad to the movement at home.</span></div></li>
+</ul>
+</div>
+</div>
+</section>
+
+<section class="band-cream" id="states">
+<div class="wrap">
+<div class="section-head reveal">
+<div class="eyebrow">The Niger Delta</div>
+<h2>Nine states, one region, one forum.</h2>
+<p>PANDEF speaks for the peoples of the Niger Delta — the South-South geopolitical zone and its neighbouring oil-producing states.</p>
+</div>
+<div class="states-grid reveal">
+<div class="state-card"><div class="state-swatch" style="background:var(--orange)"></div><h4>Akwa Ibom</h4><span>South-South</span></div>
+<div class="state-card"><div class="state-swatch" style="background:var(--blue)"></div><h4>Bayelsa</h4><span>National Secretariat · Yenagoa</span></div>
+<div class="state-card"><div class="state-swatch" style="background:var(--forest)"></div><h4>Rivers</h4><span>South-South</span></div>
+<div class="state-card"><div class="state-swatch" style="background:var(--gold)"></div><h4>Delta</h4><span>South-South</span></div>
+<div class="state-card"><div class="state-swatch" style="background:var(--lime)"></div><h4>Edo</h4><span>South-South</span></div>
+<div class="state-card"><div class="state-swatch" style="background:var(--orange); opacity:0.8"></div><h4>Cross River</h4><span>South-South</span></div>
+<div class="state-card"><div class="state-swatch" style="background:var(--blue); opacity:0.8"></div><h4>Abia</h4><span>South-East</span></div>
+<div class="state-card"><div class="state-swatch" style="background:var(--forest); opacity:0.8"></div><h4>Imo</h4><span>South-East</span></div>
+<div class="state-card"><div class="state-swatch" style="background:var(--gold); opacity:0.8"></div><h4>Ondo</h4><span>South-West</span></div>
+</div>
+</div>
+</section>
+
+<section class="band-paper" id="structure">
+<div class="wrap">
+<div class="section-head reveal">
+<div class="eyebrow">How We're Organised</div>
+<h2>A structure built for accountability.</h2>
+</div>
+<div class="structure-grid reveal">
+<div class="structure-card">
+<div class="eyebrow">Home</div>
+<h3>Board of Trustees</h3>
+<p>Elder statesmen and traditional leaders from across the Niger Delta states provide oversight and continuity for the Forum's mandate.</p>
+</div>
+<div class="structure-card">
+<div class="eyebrow">Home</div>
+<h3>National Secretariat</h3>
+<p>Based at the Niger Delta Wetland Centre Complex in Yenagoa, Bayelsa State, coordinating day-to-day affairs of the Forum.</p>
+</div>
+<div class="structure-card">
+<div class="eyebrow">Abroad</div>
+<h3>Diaspora Coordinating Council</h3>
+<p>Headquartered in Ottawa, Canada — organising chapters, members and advocacy efforts among Niger Delta communities worldwide.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="band-navy" id="chapters">
+<div class="wrap chapters-wrap">
+<div class="reveal">
+<div class="eyebrow">Global Footprint</div>
+<h2>Wherever the Delta's people have settled, the Forum follows.</h2>
+<p style="color:#B9C0D6; margin-top:18px;">The PDCC coordinates members and emerging chapters across North America and Europe, with the Council's headquarters based in Ottawa. As membership grows, new chapters are chartered to organise locally and report into the national council.</p>
+<a href="#involve" class="btn btn-primary" style="margin-top:28px;">Start a Chapter →</a>
+</div>
+<ul class="chapter-list reveal">
+<li><span>Ottawa, Canada</span><span>Council HQ</span></li>
+<li><span>North America</span><span>Chapters Coordinating</span></li>
+<li><span>Europe</span><span>Chapters Coordinating</span></li>
+<li><span>Your City</span><span>Chapter Forming Soon</span></li>
+</ul>
+</div>
+</section>
+
+<section class="band-cream" id="involve">
+<div class="wrap involve-grid">
+<div class="reveal">
+<div class="eyebrow">Get Involved</div>
+<h2>Join the Council.</h2>
+<p style="color:var(--ink-soft); margin-top:16px; max-width:440px;">Membership is open to Niger Delta descendants living abroad who want to stay connected to home and contribute to the Forum's work. Tell us where you are, and a chapter coordinator will reach out.</p>
+</div>
+<form class="form-card reveal" onsubmit="event.preventDefault(); this.querySelector('.btn-submit').textContent='Request Received ✓';">
+<div class="form-row">
+<label for="name">Full name</label>
+<input id="name" type="text" placeholder="e.g. Boma Amachree" required>
+</div>
+<div class="form-row form-two">
+<div>
+<label for="state">State of origin</label>
+<select id="state">
+<option>Akwa Ibom</option><option>Bayelsa</option><option>Rivers</option>
+<option>Delta</option><option>Edo</option><option>Cross River</option>
+<option>Abia</option><option>Imo</option><option>Ondo</option>
+</select>
+</div>
+<div>
+<label for="loc">Current country</label>
+<input id="loc" type="text" placeholder="e.g. Canada">
+</div>
+</div>
+<div class="form-row">
+<label for="email">Email address</label>
+<input id="email" type="email" placeholder="you@email.com" required>
+</div>
+<button class="btn-submit" type="submit">Request to Join</button>
+<p class="form-note">A coordinator from your nearest chapter will follow up by email.</p>
+</form>
+</div>
+</section>
+
+<footer>
+<div class="wrap">
+<div class="footer-grid">
+<div class="footer-brand">
+<div class="brand-text">
+<div class="pandef">PANDEF Diaspora</div>
+<div class="diaspora" style="color:var(--lime)">Pan Niger Delta Forum</div>
+</div>
+<p>The global diaspora wing of the Pan Niger Delta Forum, coordinated by the PANDEF Diaspora Coordinating Council (PDCC).</p>
+</div>
+<div>
+<h5>Explore</h5>
+<ul>
+<li><a href="#mission">Mission</a></li>
+<li><a href="#states">The Nine States</a></li>
+<li><a href="#structure">Structure</a></li>
+<li><a href="#chapters">Chapters</a></li>
+</ul>
+</div>
+<div>
+<h5>Council</h5>
+<ul>
+<li><a href="#involve">Join</a></li>
+<li><a href="#">National Secretariat</a></li>
+<li><a href="#">Board of Trustees</a></li>
+</ul>
+</div>
+<div>
+<h5>Contact</h5>
+<ul>
+<li>125 Riga Private, Ottawa, Ontario K2B 8N6, Canada</li>
+<li>+1 (613) 302-7243</li>
+<li>pandefdiaspora@gmail.com</li>
+</ul>
+</div>
+</div>
+<div class="footer-bottom">
+<span>© 2026 PANDEF Diaspora Coordinating Council. All rights reserved.</span>
+<span>www.pandefdiaspora.org</span>
+</div>
+</div>
+</footer>
+
+<script>
+const revealEls = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver((entries)=>{
+entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+}, { threshold: 0.15 });
+revealEls.forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
