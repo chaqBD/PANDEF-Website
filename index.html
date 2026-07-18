@@ -169,6 +169,18 @@ font-family:'IBM Plex Mono', monospace; font-size:0.78rem; color:var(--orange); 
 }
 .pillar-list h4{ font-size:1rem; margin-bottom:4px; }
 .pillar-list span{ color:var(--ink-soft); font-size:0.92rem; }
+/* ---------- LEADERSHIP ---------- */
+.leadership-list{ list-style:none; display:flex; flex-direction:column; max-width:680px; }
+.leadership-list li{
+display:flex; gap:24px; align-items:flex-start; padding:24px 0; border-bottom:1px solid var(--line);
+}
+.leadership-list li:first-child{ padding-top:0; }
+.leadership-list li:last-child{ border-bottom:none; }
+.leadership-num{
+font-family:'Fraunces', serif; font-size:1.6rem; font-weight:600; color:var(--orange); flex-shrink:0; width:44px;
+}
+.leadership-list h4{ font-size:1.05rem; margin-bottom:6px; }
+.leadership-list span{ color:var(--ink-soft); font-size:0.94rem; }
 /* ---------- STATES ---------- */
 .states-grid{
 display:grid; grid-template-columns:repeat(3, 1fr); gap:1px; background:var(--line);
@@ -253,8 +265,9 @@ font-size:0.8rem; color:#7B87AA; flex-wrap:wrap; gap:12px;
 <nav>
 <ul>
 <li><a href="#mission">Mission</a></li>
-<li><a href="#states">The Nine States</a></li>
+<li><a href="#states">The Six States</a></li>
 <li><a href="#structure">Structure</a></li>
+<li><a href="#leadership">Leadership</a></li>
 <li><a href="#chapters">Chapters</a></li>
 <li><a href="#involve" class="nav-cta">Join the Council</a></li>
 </ul>
@@ -266,14 +279,14 @@ font-size:0.8rem; color:#7B87AA; flex-wrap:wrap; gap:12px;
 <div class="wrap hero-grid">
 <div>
 <div class="eyebrow">PANDEF Diaspora Coordinating Council · Est. Ottawa, Canada</div>
-<h1>Nine states.<br>One <em>Delta</em> voice,<br>carried across the world.</h1>
+<h1>Six states.<br>One <em>Delta</em> voice,<br>carried across the world.</h1>
 <p class="lead">The global diaspora wing of the Pan Niger Delta Forum — mobilising Niger Delta sons and daughters abroad in service of peace, equity, and development back home.</p>
 <div class="hero-ctas">
 <a href="#mission" class="btn btn-primary">Read Our Mission →</a>
 <a href="#involve" class="btn btn-outline">Join the Council</a>
 </div>
 <div class="hero-stats">
-<div><strong>9</strong><span>NIGER DELTA STATES</span></div>
+<div><strong>6</strong><span>NIGER DELTA STATES</span></div>
 <div><strong>2016</strong><span>PANDEF FOUNDED</span></div>
 <div><strong>Global</strong><span>DIASPORA REACH</span></div>
 </div>
@@ -313,8 +326,8 @@ font-size:0.8rem; color:#7B87AA; flex-wrap:wrap; gap:12px;
 <div class="wrap">
 <div class="section-head reveal">
 <div class="eyebrow">The Niger Delta</div>
-<h2>Nine states, one region, one forum.</h2>
-<p>PANDEF speaks for the peoples of the Niger Delta — the South-South geopolitical zone and its neighbouring oil-producing states.</p>
+<h2>Six states, one region, one forum.</h2>
+<p>PANDEF speaks for the peoples of the Niger Delta — the South-South geopolitical zone.</p>
 </div>
 <div class="states-grid reveal">
 <div class="state-card"><div class="state-swatch" style="background:var(--orange)"></div><h4>Akwa Ibom</h4><span>South-South</span></div>
@@ -323,9 +336,6 @@ font-size:0.8rem; color:#7B87AA; flex-wrap:wrap; gap:12px;
 <div class="state-card"><div class="state-swatch" style="background:var(--gold)"></div><h4>Delta</h4><span>South-South</span></div>
 <div class="state-card"><div class="state-swatch" style="background:var(--lime)"></div><h4>Edo</h4><span>South-South</span></div>
 <div class="state-card"><div class="state-swatch" style="background:var(--orange); opacity:0.8"></div><h4>Cross River</h4><span>South-South</span></div>
-<div class="state-card"><div class="state-swatch" style="background:var(--blue); opacity:0.8"></div><h4>Abia</h4><span>South-East</span></div>
-<div class="state-card"><div class="state-swatch" style="background:var(--forest); opacity:0.8"></div><h4>Imo</h4><span>South-East</span></div>
-<div class="state-card"><div class="state-swatch" style="background:var(--gold); opacity:0.8"></div><h4>Ondo</h4><span>South-West</span></div>
 </div>
 </div>
 </section>
@@ -353,6 +363,22 @@ font-size:0.8rem; color:#7B87AA; flex-wrap:wrap; gap:12px;
 <p>Headquartered in Ottawa, Canada — organising chapters, members and advocacy efforts among Niger Delta communities worldwide.</p>
 </div>
 </div>
+</div>
+</section>
+
+<section class="band-cream" id="leadership">
+<div class="wrap">
+<div class="section-head reveal">
+<div class="eyebrow">National Leadership</div>
+<h2>A chain of accountability, home to abroad.</h2>
+<p>Authority runs from elder oversight down to the secretariat that manages daily affairs — the same chain PANDEF Diaspora reports into from abroad.</p>
+</div>
+<ol class="leadership-list reveal">
+<li><span class="leadership-num">01</span><div><h4>Board of Trustees</h4><span>Elder statesmen and traditional rulers from across the Niger Delta states, holding final oversight and continuity of the Forum's mandate.</span></div></li>
+<li><span class="leadership-num">02</span><div><h4>National Secretariat</h4><span>Runs the Forum's day-to-day affairs from the Niger Delta Wetland Centre Complex in Yenagoa, Bayelsa State.</span></div></li>
+<li><span class="leadership-num">03</span><div><h4>State Chapters</h4><span>Represent each of the six Niger Delta states within the national body.</span></div></li>
+</ol>
+<p class="form-note" style="margin-top:28px;">Individual officer names and titles to be supplied by the National Secretariat.</p>
 </div>
 </section>
 
@@ -391,7 +417,6 @@ font-size:0.8rem; color:#7B87AA; flex-wrap:wrap; gap:12px;
 <select id="state">
 <option>Akwa Ibom</option><option>Bayelsa</option><option>Rivers</option>
 <option>Delta</option><option>Edo</option><option>Cross River</option>
-<option>Abia</option><option>Imo</option><option>Ondo</option>
 </select>
 </div>
 <div>
@@ -426,8 +451,9 @@ font-size:0.8rem; color:#7B87AA; flex-wrap:wrap; gap:12px;
 <h5>Explore</h5>
 <ul>
 <li><a href="#mission">Mission</a></li>
-<li><a href="#states">The Nine States</a></li>
+<li><a href="#states">The Six States</a></li>
 <li><a href="#structure">Structure</a></li>
+<li><a href="#leadership">Leadership</a></li>
 <li><a href="#chapters">Chapters</a></li>
 </ul>
 </div>
