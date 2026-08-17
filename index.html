@@ -235,11 +235,11 @@ background:var(--paper); border:1px solid var(--line); padding:40px; border-radi
 }
 .form-card label{ display:block; font-size:0.8rem; font-family:'IBM Plex Mono', monospace; letter-spacing:0.04em; color:var(--navy); margin-bottom:8px; }
 .form-row{ margin-bottom:22px; }
-.form-card input, .form-card select{
+.form-card input, .form-card select, .form-card textarea{
 width:100%; padding:12px 14px; border:1px solid var(--line); border-radius:var(--radius);
-font-family:'Inter', sans-serif; font-size:0.94rem; background:var(--cream);
+font-family:'Inter', sans-serif; font-size:0.94rem; background:var(--cream); resize:vertical;
 }
-.form-card input:focus, .form-card select:focus{ outline:2px solid var(--orange); outline-offset:1px; }
+.form-card input:focus, .form-card select:focus, .form-card textarea:focus{ outline:2px solid var(--orange); outline-offset:1px; }
 .form-two{ display:grid; grid-template-columns:1fr 1fr; gap:18px; }
 .btn-submit{
 width:100%; background:var(--forest); color:#fff; border:none; padding:14px; border-radius:var(--radius);
@@ -487,50 +487,66 @@ font-size:0.8rem; color:#7B87AA; flex-wrap:wrap; gap:12px;
 <h2>Join PANDEF Diaspora.</h2>
 <p style="color:var(--ink-soft); margin-top:16px; max-width:440px;">Membership is open to every Niger Delta descendant living abroad. The Coordinating Council is the elected executive that runs PANDEF Diaspora — not a separate tier — so joining connects you straight into your country and state chapter.</p>
 </div>
-<form class="form-card reveal" id="joinForm" onsubmit="event.preventDefault(); this.querySelector('.btn-submit').textContent='Request Received ✓';">
+<form class="form-card reveal" id="joinForm" onsubmit="pandefSubmitJoin(event)">
+<div id="joinFormFields">
 <div class="form-row">
-<label for="name">Full name</label>
+<label for="name">Full name *</label>
 <input id="name" type="text" placeholder="e.g. Boma Amachree" required>
 </div>
-<div class="form-row form-two">
-<div>
-<label for="state">State of origin</label>
-<select id="state" required onchange="pandefUpdateLGA()">
+<div class="form-row">
+<label for="email">Email address *</label>
+<input id="email" type="email" placeholder="you@email.com" required>
+</div>
+<div class="form-row">
+<label for="phone">Phone number (include country code) *</label>
+<input id="phone" type="tel" placeholder="e.g. +1 613 302 7243" required>
+</div>
+<div class="form-row">
+<label for="state">State of origin *</label>
+<select id="state" required>
 <option value="">Select state</option>
-<option>Akwa Ibom</option><option>Bayelsa</option><option>Rivers</option>
-<option>Delta</option><option>Edo</option><option>Cross River</option>
+<option>Akwa Ibom</option><option>Bayelsa</option><option>Cross River</option>
+<option>Delta</option><option>Edo</option><option>Rivers</option>
 </select>
-</div>
-<div>
-<label for="lga">Local government area</label>
-<select id="lga" required>
-<option value="">Select state first</option>
-</select>
-</div>
 </div>
 <div class="form-row form-two">
 <div>
-<label for="country">Country of residence</label>
-<select id="country" required onchange="pandefToggleOtherCountry()">
-<option value="">Select country</option>
+<label for="region">Country/region of residence *</label>
+<select id="region" required onchange="pandefToggleOtherCountry()">
+<option value="">Select an option</option>
 <option>Canada</option>
-<option>United States</option>
-<option>United Kingdom</option>
-<option>Other Europe</option>
-<option value="Other">Other</option>
+<option>United States (USA)</option>
+<option>United Kingdom (UK)</option>
+<option>Europe (specify country)</option>
+<option>Africa (specify country)</option>
+<option>Asia (specify country)</option>
+<option>South America (specify country)</option>
 </select>
 </div>
 <div id="otherCountryWrap" style="display:none;">
-<label for="otherCountry">Please specify</label>
+<label for="otherCountry">Please specify country</label>
 <input id="otherCountry" type="text" placeholder="e.g. Germany">
 </div>
 </div>
 <div class="form-row">
-<label for="email">Email address</label>
-<input id="email" type="email" placeholder="you@email.com" required>
+<label for="city">City of residence *</label>
+<input id="city" type="text" placeholder="e.g. Ottawa" required>
+</div>
+<div class="form-row">
+<label for="occupation">Occupation/profession</label>
+<input id="occupation" type="text" placeholder="e.g. Registered Nurse">
+</div>
+<div class="form-row">
+<label for="comments">Additional comments</label>
+<textarea id="comments" rows="4" placeholder="Anything else you'd like us to know"></textarea>
 </div>
 <button class="btn-submit" type="submit">Request to Join</button>
-<p class="form-note">Your details route you to the coordinator for your country and state chapter, who will follow up by email.</p>
+<p class="form-note">Fields marked * are required. Your details route you to the coordinator for your country and state chapter.</p>
+</div>
+<div id="joinFormConfirm" style="display:none; text-align:center; padding:20px 0;">
+<h3 style="margin-bottom:12px;">Thank you for registering with PANDEF Diaspora.</h3>
+<p style="color:var(--ink-soft);">Your registration has been received successfully. We look forward to welcoming you to our global community and will contact you using the information you provided.</p>
+</div>
 </form>
 </div>
 </section>
@@ -591,33 +607,20 @@ entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unob
 }, { threshold: 0.15 });
 revealEls.forEach(el=>io.observe(el));
 
-const pandefLGAsByState = {
-"Akwa Ibom": ["Abak","Eastern Obolo","Eket","Esit Eket","Essien Udim","Etim Ekpo","Etinan","Ibeno","Ibesikpo Asutan","Ibiono Ibom","Ika","Ikono","Ikot Abasi","Ikot Ekpene","Ini","Itu","Mbo","Mkpat Enin","Nsit Atai","Nsit Ibom","Nsit Ubium","Obot Akara","Okobo","Onna","Oron","Oruk Anam","Udung Uko","Ukanafun","Uruan","Urue-Offong/Oruko","Uyo"],
-"Bayelsa": ["Brass","Ekeremor","Kolokuma/Opokuma","Nembe","Ogbia","Sagbama","Southern Ijaw","Yenagoa"],
-"Rivers": ["Abua/Odual","Ahoada East","Ahoada West","Akuku-Toru","Andoni","Asari-Toru","Bonny","Degema","Eleme","Emohua","Etche","Gokana","Ikwerre","Khana","Obio/Akpor","Ogba/Egbema/Ndoni","Ogu/Bolo","Okrika","Omuma","Opobo/Nkoro","Oyigbo","Port Harcourt","Tai"],
-"Delta": ["Aniocha North","Aniocha South","Bomadi","Burutu","Ethiope East","Ethiope West","Ika North East","Ika South","Isoko North","Isoko South","Ndokwa East","Ndokwa West","Okpe","Oshimili North","Oshimili South","Patani","Sapele","Udu","Ughelli North","Ughelli South","Ukwuani","Uvwie","Warri North","Warri South","Warri South West"],
-"Edo": ["Akoko-Edo","Egor","Esan Central","Esan North-East","Esan South-East","Esan West","Etsako Central","Etsako East","Etsako West","Igueben","Ikpoba-Okha","Oredo","Orhionmwon","Ovia North-East","Ovia South-West","Owan East","Owan West","Uhunmwonde"],
-"Cross River": ["Abi","Akamkpa","Akpabuyo","Bakassi","Bekwarra","Biase","Boki","Calabar Municipal","Calabar South","Etung","Ikom","Obanliku","Obubra","Obudu","Odukpani","Ogoja","Yakurr","Yala"]
-};
-
-function pandefUpdateLGA(){
-const stateSel = document.getElementById('state');
-const lgaSel = document.getElementById('lga');
-const lgas = pandefLGAsByState[stateSel.value];
-lgaSel.innerHTML = '';
-if(!lgas){
-lgaSel.appendChild(new Option('Select state first',''));
-return;
-}
-lgaSel.appendChild(new Option('Select LGA',''));
-lgas.forEach(lga=> lgaSel.appendChild(new Option(lga, lga)));
-}
+const pandefSpecifyCountryRegions = ["Europe (specify country)","Africa (specify country)","Asia (specify country)","South America (specify country)"];
 
 function pandefToggleOtherCountry(){
-const countrySel = document.getElementById('country');
+const regionSel = document.getElementById('region');
 const wrap = document.getElementById('otherCountryWrap');
-wrap.style.display = countrySel.value === 'Other' ? 'block' : 'none';
-document.getElementById('otherCountry').required = countrySel.value === 'Other';
+const needsSpecify = pandefSpecifyCountryRegions.includes(regionSel.value);
+wrap.style.display = needsSpecify ? 'block' : 'none';
+document.getElementById('otherCountry').required = needsSpecify;
+}
+
+function pandefSubmitJoin(event){
+event.preventDefault();
+document.getElementById('joinFormFields').style.display = 'none';
+document.getElementById('joinFormConfirm').style.display = 'block';
 }
 </script>
 </body>
