@@ -194,6 +194,23 @@ background:var(--paper); padding:28px 26px; position:relative; overflow:hidden;
 .state-card span{ font-size:0.82rem; color:var(--ink-soft); font-family:'IBM Plex Mono', monospace; }
 @media (max-width: 780px){ .states-grid{ grid-template-columns:repeat(2,1fr); } }
 @media (max-width: 520px){ .states-grid{ grid-template-columns:1fr; } }
+/* ---------- GOVERNORS ---------- */
+.governors-grid{ display:grid; grid-template-columns:repeat(3, 1fr); gap:36px 28px; }
+.governor-card{ text-align:center; }
+.governor-photo{
+width:116px; height:116px; border-radius:50%; overflow:hidden; margin:0 auto 18px;
+background:var(--line); box-shadow:0 0 0 1px var(--line);
+}
+.governor-photo img{ width:100%; height:100%; object-fit:cover; display:block; }
+.governor-photo--placeholder{
+display:flex; align-items:center; justify-content:center;
+font-family:'Fraunces', serif; font-size:2rem; color:var(--ink-soft); background:var(--cream);
+border:1.5px dashed var(--line);
+}
+.governor-card h4{ font-size:1.05rem; margin-bottom:4px; }
+.governor-card span{ font-size:0.82rem; color:var(--ink-soft); font-family:'IBM Plex Mono', monospace; }
+@media (max-width: 780px){ .governors-grid{ grid-template-columns:repeat(2,1fr); } }
+@media (max-width: 520px){ .governors-grid{ grid-template-columns:1fr; } }
 /* ---------- STRUCTURE ---------- */
 .structure-grid{ display:grid; grid-template-columns:repeat(3, 1fr); gap:28px; }
 .structure-card{
@@ -268,6 +285,7 @@ font-size:0.8rem; color:#7B87AA; flex-wrap:wrap; gap:12px;
 <li><a href="#states">The Six States</a></li>
 <li><a href="#governors">Governors</a></li>
 <li><a href="#structure">Structure</a></li>
+<li><a href="#executive">Executive</a></li>
 <li><a href="#leadership">Leadership</a></li>
 <li><a href="#chapters">Chapters</a></li>
 <li><a href="#involve" class="nav-cta">Join PANDEF Diaspora</a></li>
@@ -348,15 +366,33 @@ font-size:0.8rem; color:#7B87AA; flex-wrap:wrap; gap:12px;
 <h2>PANDEF State Executive Governors.</h2>
 <p>The sitting executive governors of the six Niger Delta states — the region's political leadership, standing alongside PANDEF's advocacy for its people.</p>
 </div>
-<div class="states-grid reveal">
-<div class="state-card"><div class="state-swatch" style="background:var(--orange)"></div><h4>Umo Eno</h4><span>Governor, Akwa Ibom State</span></div>
-<div class="state-card"><div class="state-swatch" style="background:var(--blue)"></div><h4>Douye Diri</h4><span>Governor, Bayelsa State</span></div>
-<div class="state-card"><div class="state-swatch" style="background:var(--forest)"></div><h4>Siminalayi Fubara</h4><span>Governor, Rivers State</span></div>
-<div class="state-card"><div class="state-swatch" style="background:var(--gold)"></div><h4>Sheriff Oborevwori</h4><span>Governor, Delta State</span></div>
-<div class="state-card"><div class="state-swatch" style="background:var(--lime)"></div><h4>Monday Okpebholo</h4><span>Governor, Edo State</span></div>
-<div class="state-card"><div class="state-swatch" style="background:var(--orange); opacity:0.8"></div><h4>Bassey Otu</h4><span>Governor, Cross River State</span></div>
+<div class="governors-grid reveal">
+<div class="governor-card">
+<div class="governor-photo"><img src="assets/governors/akwa-ibom-umo-eno.jpg" alt="Umo Eno" style="object-position:60% 15%;"></div>
+<h4>Umo Eno</h4><span>Governor, Akwa Ibom State</span>
 </div>
-<p class="form-note" style="margin-top:24px;">Governors current as of July 2026 — please confirm before publishing, as state elections can change this list.</p>
+<div class="governor-card">
+<div class="governor-photo"><img src="assets/governors/bayelsa-douye-diri.jpg" alt="Douye Diri" style="object-position:50% 20%;"></div>
+<h4>Douye Diri</h4><span>Governor, Bayelsa State</span>
+</div>
+<div class="governor-card">
+<div class="governor-photo"><img src="assets/governors/rivers-siminalayi-fubara.jpg" alt="Siminalayi Fubara" style="object-position:25% 25%;"></div>
+<h4>Siminalayi Fubara</h4><span>Governor, Rivers State</span>
+</div>
+<div class="governor-card">
+<div class="governor-photo"><img src="assets/governors/delta-sheriff-oborevwori.jpg" alt="Sheriff Oborevwori" style="object-position:45% 20%;"></div>
+<h4>Sheriff Oborevwori</h4><span>Governor, Delta State</span>
+</div>
+<div class="governor-card">
+<div class="governor-photo"><img src="assets/governors/edo-monday-okpebholo.jpg" alt="Monday Okpebholo" style="object-position:35% 15%;"></div>
+<h4>Monday Okpebholo</h4><span>Governor, Edo State</span>
+</div>
+<div class="governor-card">
+<div class="governor-photo"><img src="assets/governors/cross-river-bassey-otu.jpg" alt="Bassey Otu" style="object-position:50% 12%;"></div>
+<h4>Bassey Otu</h4><span>Governor, Cross River State</span>
+</div>
+</div>
+<p class="form-note" style="margin-top:24px;">Governors current as of July 2026 — please confirm before publishing, as state elections can change this list. Photos: official state government portraits.</p>
 </div>
 </section>
 
@@ -383,6 +419,31 @@ font-size:0.8rem; color:#7B87AA; flex-wrap:wrap; gap:12px;
 <p>Elder statesmen and traditional leaders from across the Niger Delta states provide oversight and continuity for the Forum's mandate.</p>
 </div>
 </div>
+</div>
+</section>
+
+<section class="band-paper" id="executive">
+<div class="wrap">
+<div class="section-head reveal">
+<div class="eyebrow">PDCC Executive Committee</div>
+<h2>The people running PANDEF Diaspora.</h2>
+<p>Photos and profiles of the Coordinating Council's executive officers will appear here as they're confirmed.</p>
+</div>
+<div class="governors-grid reveal">
+<div class="governor-card">
+<div class="governor-photo governor-photo--placeholder"><span>?</span></div>
+<h4>Name pending</h4><span>Profile coming soon</span>
+</div>
+<div class="governor-card">
+<div class="governor-photo governor-photo--placeholder"><span>?</span></div>
+<h4>Name pending</h4><span>Profile coming soon</span>
+</div>
+<div class="governor-card">
+<div class="governor-photo governor-photo--placeholder"><span>?</span></div>
+<h4>Name pending</h4><span>Profile coming soon</span>
+</div>
+</div>
+<p class="form-note" style="margin-top:24px;">Send us your photo and a short profile to replace a placeholder card.</p>
 </div>
 </section>
 
@@ -494,6 +555,7 @@ font-size:0.8rem; color:#7B87AA; flex-wrap:wrap; gap:12px;
 <li><a href="#states">The Six States</a></li>
 <li><a href="#governors">Governors</a></li>
 <li><a href="#structure">Structure</a></li>
+<li><a href="#executive">Executive</a></li>
 <li><a href="#leadership">Leadership</a></li>
 <li><a href="#chapters">Chapters</a></li>
 </ul>
