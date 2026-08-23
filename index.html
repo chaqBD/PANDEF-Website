@@ -9,260 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-:root{
---navy:#0E1B3D;
---forest:#0B6B3A;
---orange:#E8641D;
---blue:#1E9DBE;
---lime:#8FC93A;
---gold:#F0A81E;
---cream:#F7F4EC;
---paper:#FFFFFE;
---ink:#161B22;
---ink-soft:#4B5262;
---line: rgba(14,27,61,0.12);
---radius: 2px;
-}
-*{box-sizing:border-box; margin:0; padding:0;}
-html{scroll-behavior:smooth;}
-body{
-background:var(--cream);
-color:var(--ink);
-font-family:'Inter', sans-serif;
-line-height:1.6;
-overflow-x:hidden;
-}
-::selection{ background:var(--gold); color:var(--navy); }
-h1,h2,h3,h4{
-font-family:'Fraunces', serif;
-color:var(--navy);
-font-weight:600;
-letter-spacing:-0.01em;
-}
-.eyebrow{
-font-family:'IBM Plex Mono', monospace;
-font-size:0.72rem;
-letter-spacing:0.16em;
-text-transform:uppercase;
-color:var(--forest);
-display:flex;
-align-items:center;
-gap:10px;
-margin-bottom:18px;
-font-weight:500;
-}
-.eyebrow::before{
-content:'';
-width:26px; height:2px;
-background:var(--orange);
-display:inline-block;
-}
-.wrap{ max-width:1180px; margin:0 auto; padding:0 40px; }
-a{ color:inherit; text-decoration:none; }
-/* ---------- HEADER ---------- */
-header{
-position:sticky; top:0; z-index:100;
-background:rgba(247,244,236,0.92);
-backdrop-filter:blur(10px);
-border-bottom:1px solid var(--line);
-}
-.navrow{
-display:flex; align-items:center; justify-content:space-between;
-padding:16px 40px;
-max-width:1180px; margin:0 auto;
-}
-.brand{ display:flex; align-items:center; gap:12px; }
-.brand-mark{
-width:42px; height:42px; object-fit:contain; display:block; flex-shrink:0;
-}
-.brand-text{ line-height:1.1; }
-.brand-text .pandef{
-font-family:'Fraunces', serif; font-weight:700; font-size:1.05rem; color:var(--navy); letter-spacing:0.01em;
-}
-.brand-text .diaspora{
-font-family:'IBM Plex Mono', monospace; font-size:0.62rem; letter-spacing:0.12em; color:var(--forest); text-transform:uppercase;
-}
-nav ul{ list-style:none; display:flex; gap:32px; }
-nav a{ font-size:0.88rem; color:var(--navy); font-weight:500; position:relative; padding:4px 0;}
-nav a::after{
-content:''; position:absolute; left:0; bottom:0; width:0; height:1.5px; background:var(--orange);
-transition:width .25s ease;
-}
-nav a:hover::after{ width:100%; }
-.nav-cta{
-background:var(--navy); color:var(--cream) !important; padding:9px 20px; border-radius:var(--radius);
-font-size:0.82rem; font-weight:600;
-}
-.nav-cta::after{ display:none; }
-.menu-btn{ display:none; background:none; border:none; cursor:pointer; }
-@media (max-width: 880px){
-nav ul{ display:none; }
-.menu-btn{ display:block; }
-}
-/* ---------- HERO ---------- */
-.hero{
-position:relative;
-padding:100px 0 80px;
-overflow:hidden;
-}
-.hero-grid{
-display:grid; grid-template-columns:1.05fr 0.95fr; gap:60px; align-items:center;
-}
-.hero h1{
-font-size:clamp(2.4rem, 4.6vw, 3.7rem);
-line-height:1.05;
-margin-bottom:24px;
-}
-.hero h1 em{ font-style:italic; color:var(--orange); }
-.hero p.lead{
-font-size:1.08rem; color:var(--ink-soft); max-width:520px; margin-bottom:34px;
-}
-.hero-ctas{ display:flex; gap:16px; flex-wrap:wrap; margin-bottom:40px;}
-.btn{
-padding:13px 26px; border-radius:var(--radius); font-weight:600; font-size:0.92rem;
-display:inline-flex; align-items:center; gap:8px; transition:transform .2s ease, box-shadow .2s ease;
-}
-.btn-primary{ background:var(--orange); color:#fff; }
-.btn-primary:hover{ transform:translateY(-2px); box-shadow:0 10px 20px rgba(232,100,29,0.28);}
-.btn-outline{ border:1.5px solid var(--navy); color:var(--navy); }
-.btn-outline:hover{ background:var(--navy); color:#fff; }
-.hero-stats{ display:flex; gap:40px; }
-.hero-stats div strong{
-display:block; font-family:'Fraunces', serif; font-size:1.9rem; color:var(--navy);
-}
-.hero-stats div span{ font-size:0.78rem; color:var(--ink-soft); font-family:'IBM Plex Mono', monospace; letter-spacing:0.03em;}
-/* mosaic signature */
-.mosaic-wrap{ position:relative; }
-.mosaic-caption{
-position:absolute; bottom:-38px; left:0; right:0; text-align:center;
-font-family:'IBM Plex Mono', monospace; font-size:0.7rem; color:var(--ink-soft); letter-spacing:0.08em;
-}
-.mosaic-piece{ cursor:pointer; transition: transform .35s ease, filter .35s ease; transform-origin:center; }
-.mosaic-piece:hover{ transform:scale(1.045); filter:brightness(1.08); }
-.mosaic-tooltip{
-font-family:'IBM Plex Mono', monospace; font-size:11px; fill:var(--navy); opacity:0; transition:opacity .2s ease;
-pointer-events:none;
-}
-.mosaic-piece:hover + .mosaic-tooltip,
-.mosaic-group:hover .mosaic-tooltip{ opacity:1; }
-/* ---------- SECTION DIVIDER (river line) ---------- */
-.river{ width:100%; height:36px; display:block; }
-section{ padding:90px 0; position:relative; }
-.band-cream{ background:var(--cream); }
-.band-paper{ background:var(--paper); }
-.band-navy{ background:var(--navy); color:#EDEFF5; }
-.band-navy h2{ color:#fff; }
-.band-navy .eyebrow{ color:var(--lime); }
-.band-navy .eyebrow::before{ background:var(--gold); }
-.section-head{ max-width:680px; margin-bottom:56px; }
-.section-head h2{ font-size:clamp(1.8rem, 3vw, 2.5rem); }
-.section-head p{ color:var(--ink-soft); margin-top:16px; font-size:1.02rem; }
-.band-navy .section-head p{ color:#B9C0D6; }
-/* ---------- ABOUT ---------- */
-.about-grid{ display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:start; }
-.about-grid p{ color:var(--ink-soft); margin-bottom:18px; }
-.pillar-list{ list-style:none; display:flex; flex-direction:column; gap:22px; }
-.pillar-list li{ display:flex; gap:16px; align-items:flex-start; }
-.pillar-num{
-font-family:'IBM Plex Mono', monospace; font-size:0.78rem; color:var(--orange); font-weight:600; padding-top:3px; flex-shrink:0; width:26px;
-}
-.pillar-list h4{ font-size:1rem; margin-bottom:4px; }
-.pillar-list span{ color:var(--ink-soft); font-size:0.92rem; }
-/* ---------- LEADERSHIP ---------- */
-.leadership-list{ list-style:none; display:flex; flex-direction:column; max-width:680px; }
-.leadership-list li{
-display:flex; gap:24px; align-items:flex-start; padding:24px 0; border-bottom:1px solid var(--line);
-}
-.leadership-list li:first-child{ padding-top:0; }
-.leadership-list li:last-child{ border-bottom:none; }
-.leadership-num{
-font-family:'Fraunces', serif; font-size:1.6rem; font-weight:600; color:var(--orange); flex-shrink:0; width:44px;
-}
-.leadership-list h4{ font-size:1.05rem; margin-bottom:6px; }
-.leadership-list span{ color:var(--ink-soft); font-size:0.94rem; }
-/* ---------- STATES ---------- */
-.states-grid{
-display:grid; grid-template-columns:repeat(3, 1fr); gap:1px; background:var(--line);
-border:1px solid var(--line);
-}
-.state-card{
-background:var(--paper); padding:28px 26px; position:relative; overflow:hidden;
-}
-.state-swatch{ width:34px; height:34px; border-radius:50%; margin-bottom:18px; }
-.state-card h4{ font-size:1.08rem; margin-bottom:6px; }
-.state-card span{ font-size:0.82rem; color:var(--ink-soft); font-family:'IBM Plex Mono', monospace; }
-@media (max-width: 780px){ .states-grid{ grid-template-columns:repeat(2,1fr); } }
-@media (max-width: 520px){ .states-grid{ grid-template-columns:1fr; } }
-/* ---------- GOVERNORS ---------- */
-.governors-grid{ display:grid; grid-template-columns:repeat(3, 1fr); gap:36px 28px; }
-.governor-card{ text-align:center; }
-.governor-photo{
-width:116px; height:116px; border-radius:50%; overflow:hidden; margin:0 auto 18px;
-background:var(--line); box-shadow:0 0 0 1px var(--line);
-}
-.governor-photo img{ width:100%; height:100%; object-fit:cover; display:block; }
-.governor-card h4{ font-size:1.05rem; margin-bottom:4px; }
-.governor-card span{ font-size:0.82rem; color:var(--ink-soft); font-family:'IBM Plex Mono', monospace; }
-@media (max-width: 780px){ .governors-grid{ grid-template-columns:repeat(2,1fr); } }
-@media (max-width: 520px){ .governors-grid{ grid-template-columns:1fr; } }
-/* ---------- STRUCTURE ---------- */
-.structure-grid{ display:grid; grid-template-columns:repeat(3, 1fr); gap:28px; }
-.structure-card{
-border:1px solid var(--line); padding:32px 28px; background:var(--cream); border-radius:var(--radius);
-}
-.structure-card .eyebrow{ margin-bottom:14px; }
-.structure-card h3{ font-size:1.2rem; margin-bottom:10px; }
-.structure-card p{ color:var(--ink-soft); font-size:0.94rem; }
-@media (max-width: 880px){ .structure-grid{ grid-template-columns:1fr; } }
-/* ---------- CHAPTERS / MAP ---------- */
-.chapters-wrap{ display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; }
-.chapter-list{ list-style:none; display:flex; flex-direction:column; gap:0; }
-.chapter-list li{
-display:flex; justify-content:space-between; padding:18px 0; border-bottom:1px solid rgba(255,255,255,0.14);
-font-size:0.95rem;
-}
-.chapter-list li span:last-child{ color:var(--lime); font-family:'IBM Plex Mono', monospace; font-size:0.82rem; }
-/* ---------- INVOLVED / FORM ---------- */
-.involve-grid{ display:grid; grid-template-columns:1fr 1fr; gap:60px; }
-.form-card{
-background:var(--paper); border:1px solid var(--line); padding:40px; border-radius:var(--radius);
-}
-.form-card label{ display:block; font-size:0.8rem; font-family:'IBM Plex Mono', monospace; letter-spacing:0.04em; color:var(--navy); margin-bottom:8px; }
-.form-row{ margin-bottom:22px; }
-.form-card input, .form-card select, .form-card textarea{
-width:100%; padding:12px 14px; border:1px solid var(--line); border-radius:var(--radius);
-font-family:'Inter', sans-serif; font-size:0.94rem; background:var(--cream); resize:vertical;
-}
-.form-card input:focus, .form-card select:focus, .form-card textarea:focus{ outline:2px solid var(--orange); outline-offset:1px; }
-.form-two{ display:grid; grid-template-columns:1fr 1fr; gap:18px; }
-.btn-submit{
-width:100%; background:var(--forest); color:#fff; border:none; padding:14px; border-radius:var(--radius);
-font-weight:600; font-size:0.95rem; cursor:pointer; transition:background .2s ease;
-}
-.btn-submit:hover{ background:#08532c; }
-.form-note{ font-size:0.78rem; color:var(--ink-soft); margin-top:14px; }
-/* ---------- FOOTER ---------- */
-footer{ background:var(--navy); color:#B9C0D6; padding:64px 0 30px; }
-.footer-grid{ display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:40px; margin-bottom:50px; }
-.footer-brand .brand-text .pandef{ color:#fff; }
-.footer-brand p{ margin-top:16px; font-size:0.88rem; max-width:280px; color:#96A0BE; }
-footer h5{ color:#fff; font-family:'IBM Plex Mono', monospace; font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:18px; }
-footer ul{ list-style:none; display:flex; flex-direction:column; gap:12px; }
-footer ul a{ font-size:0.9rem; color:#B9C0D6; }
-footer ul a:hover{ color:var(--gold); }
-.footer-bottom{
-border-top:1px solid rgba(255,255,255,0.12); padding-top:26px; display:flex; justify-content:space-between;
-font-size:0.8rem; color:#7B87AA; flex-wrap:wrap; gap:12px;
-}
-@media (max-width: 880px){ .footer-grid{ grid-template-columns:1fr 1fr; } .about-grid, .chapters-wrap, .involve-grid{ grid-template-columns:1fr; } .hero-grid{ grid-template-columns:1fr; } }
-.reveal{ opacity:0; transform:translateY(18px); transition:opacity .7s ease, transform .7s ease; }
-.reveal.in{ opacity:1; transform:translateY(0); }
-@media (prefers-reduced-motion: reduce){
-.reveal{ opacity:1; transform:none; transition:none; }
-.mosaic-piece{ transition:none; }
-}
-</style>
+<link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
 <header>
@@ -277,11 +24,10 @@ font-size:0.8rem; color:#7B87AA; flex-wrap:wrap; gap:12px;
 <nav>
 <ul>
 <li><a href="#mission">Mission</a></li>
-<li><a href="#states">The Six States</a></li>
-<li><a href="#governors">Governors</a></li>
-<li><a href="#structure">Structure</a></li>
 <li><a href="#executive">Executive</a></li>
-<li><a href="#leadership">Leadership</a></li>
+<li><a href="#governors">Governors</a></li>
+<li><a href="#events">Events</a></li>
+<li><a href="#gallery">Gallery</a></li>
 <li><a href="#chapters">Chapters</a></li>
 <li><a href="#involve" class="nav-cta">Join PANDEF Diaspora</a></li>
 </ul>
@@ -325,6 +71,7 @@ font-size:0.8rem; color:#7B87AA; flex-wrap:wrap; gap:12px;
 <div class="reveal">
 <p>Through the PANDEF Diaspora Coordinating Council (PDCC), Niger Delta descendants around the world stay connected to home — organising, advocating, and channelling resources and expertise back into the region's development.</p>
 <p>We work in step with the National Secretariat and Board of Trustees in Nigeria, serving as a bridge between the homeland and its global community: a second front for the same cause.</p>
+<p style="font-size:0.9rem;">PANDEF speaks for the peoples of six Niger Delta states: Akwa Ibom, Bayelsa, Cross River, Delta, Edo and Rivers.</p>
 </div>
 <ul class="pillar-list reveal">
 <li><span class="pillar-num">01</span><div><h4>Peace &amp; Security</h4><span>Standing for stability and inter-ethnic harmony across the Niger Delta region.</span></div></li>
@@ -336,20 +83,110 @@ font-size:0.8rem; color:#7B87AA; flex-wrap:wrap; gap:12px;
 </div>
 </section>
 
-<section class="band-cream" id="states">
+<section class="band-paper" id="executive">
 <div class="wrap">
 <div class="section-head reveal">
-<div class="eyebrow">The Niger Delta</div>
-<h2>Six states, one region, one forum.</h2>
-<p>PANDEF speaks for the peoples of the Niger Delta — the South-South geopolitical zone.</p>
+<div class="eyebrow">PDCC Executive Committee</div>
+<h2>The people running PANDEF Diaspora.</h2>
+<p>The Coordinating Council's executive officers, elected to run PANDEF Diaspora's day-to-day work.</p>
 </div>
-<div class="states-grid reveal">
-<div class="state-card"><div class="state-swatch" style="background:var(--orange)"></div><h4>Akwa Ibom</h4><span>South-South</span></div>
-<div class="state-card"><div class="state-swatch" style="background:var(--blue)"></div><h4>Bayelsa</h4><span>National Secretariat · Yenagoa</span></div>
-<div class="state-card"><div class="state-swatch" style="background:var(--forest)"></div><h4>Rivers</h4><span>South-South</span></div>
-<div class="state-card"><div class="state-swatch" style="background:var(--gold)"></div><h4>Delta</h4><span>South-South</span></div>
-<div class="state-card"><div class="state-swatch" style="background:var(--lime)"></div><h4>Edo</h4><span>South-South</span></div>
-<div class="state-card"><div class="state-swatch" style="background:var(--orange); opacity:0.8"></div><h4>Cross River</h4><span>South-South</span></div>
+<div class="governors-grid reveal">
+<div class="governor-card">
+<div class="governor-photo"><img src="assets/team/festus-ofume.jpg" alt="Festus Ofume"></div>
+<h4>Festus Ofume</h4><span>Diaspora Coordinator General</span>
+</div>
+<div class="governor-card">
+<div class="governor-photo"><img src="assets/team/lamiegha-brinemugha.jpg" alt="Lamiegha Brinemugha"></div>
+<h4>Lamiegha Brinemugha</h4><span>Secretary General</span>
+</div>
+<div class="governor-card">
+<div class="governor-photo"><img src="assets/team/imeobong-essien.jpg" alt="Imeobong Essien"></div>
+<h4>Imeobong Essien</h4><span>Deputy Coordinator General</span>
+</div>
+<div class="governor-card">
+<div class="governor-photo"><img src="assets/team/ufuoma-amarasa.jpg" alt="Ufuoma Amarasa"></div>
+<h4>Ufuoma Amarasa</h4><span>Treasurer / Director of Finance</span>
+</div>
+<div class="governor-card">
+<div class="governor-photo"><img src="assets/team/prebi-brisibe.jpg" alt="Prebi Brisibe"></div>
+<h4>Prebi Brisibe</h4><span>Director of Women Affairs</span>
+</div>
+<div class="governor-card">
+<div class="governor-photo"><img src="assets/team/slyvanus-ogbeche.jpg" alt="Slyvanus Ogbeche"></div>
+<h4>Slyvanus Ogbeche</h4><span>Director of Media &amp; Publicity</span>
+</div>
+<div class="governor-card">
+<div class="governor-photo"><img src="assets/team/marcus-nwose.jpg" alt="Marcus Nwose"></div>
+<h4>Marcus Nwose</h4><span>Director of Education &amp; Capacity Development</span>
+</div>
+<div class="governor-card">
+<div class="governor-photo"><img src="assets/team/aye-georgina-dakpokpo.jpg" alt="Aye Georgina Dakpokpo"></div>
+<h4>Aye Georgina Dakpokpo</h4><span>Director, International Relations &amp; Partnerships</span>
+</div>
+<div class="governor-card">
+<div class="governor-photo"><img src="assets/team/ogulogu-obaide.jpg" alt="Ogulogu Obaide"></div>
+<h4>Ogulogu Obaide</h4><span>Director, Legal &amp; Intergovernmental Affairs</span>
+</div>
+<div class="governor-card">
+<div class="governor-photo"><img src="assets/team/shaka-george-oboge.jpg" alt="Shaka George Oboge"></div>
+<h4>Shaka George Oboge</h4><span>Director, Trade, Investment &amp; Economic Development</span>
+</div>
+<div class="governor-card">
+<div class="governor-photo"><img src="assets/team/kinikanwo-obasiolu.jpg" alt="Kinikanwo Obasiolu"></div>
+<h4>Kinikanwo Obasiolu</h4><span>Director, Culture and Tourism</span>
+</div>
+<div class="governor-card">
+<div class="governor-photo"><img src="assets/team/eric-ofomukoro.jpg" alt="Eric Ofomukoro"></div>
+<h4>Eric Ofomukoro</h4><span>Director, Humanitarian Affairs</span>
+</div>
+<div class="governor-card">
+<div class="governor-photo"><img src="assets/team/harrison-osauwagboe.jpg" alt="Harrison Osauwagboe"></div>
+<h4>Harrison Osauwagboe</h4><span>Assistant Secretary General</span>
+</div>
+<div class="governor-card">
+<div class="governor-photo"><img src="assets/team/vivian-adeoye.jpg" alt="Vivian Adeoye"></div>
+<h4>Vivian Adeoye</h4><span>Director, Health and Medical Mission</span>
+</div>
+<div class="governor-card">
+<div class="governor-photo"><img src="assets/team/angonimi-david-imeh.jpg" alt="Mrs Angonimi David-Imeh"></div>
+<h4>Mrs Angonimi David-Imeh</h4><span>Nigeria Liaison Officer</span>
+</div>
+</div>
+
+<div class="section-head reveal" style="margin-top:56px; margin-bottom:32px;">
+<div class="eyebrow">Country Coordinators</div>
+<h2 style="font-size:clamp(1.4rem,2.4vw,1.9rem);">Leading PANDEF Diaspora's chapters abroad.</h2>
+</div>
+<div class="governors-grid reveal">
+<div class="governor-card">
+<div class="governor-photo"><img src="assets/team/ogulogu-obaide.jpg" alt="Ogulogu Obaide"></div>
+<h4>Ogulogu Obaide</h4><span>Coordinator, Canada</span>
+</div>
+<div class="governor-card">
+<div class="governor-photo"><img src="assets/team/shaka-george-oboge.jpg" alt="Shaka George Oboge"></div>
+<h4>Shaka George Oboge</h4><span>Coordinator, United States of America</span>
+</div>
+<div class="governor-card">
+<div class="governor-photo"><img src="assets/team/lamiegha-brinemugha.jpg" alt="Lamiegha Brinemugha"></div>
+<h4>Lamiegha Brinemugha</h4><span>Coordinator, United Kingdom</span>
+</div>
+</div>
+</div>
+</section>
+
+<section class="band-navy" id="chairman">
+<div class="wrap">
+<div class="section-head reveal">
+<div class="eyebrow">National Leadership</div>
+<h2>Leading PANDEF nationally.</h2>
+</div>
+<div class="chairman-spotlight reveal">
+<div class="chairman-photo"><img src="assets/chairman/godknows-igali.jpg" alt="Ambassador Dr Godknows Boladei Igali"></div>
+<div>
+<h3>Ambassador Dr Godknows Boladei Igali</h3>
+<div class="eyebrow" style="margin-bottom:14px;">National Chairman, PANDEF</div>
+<p>A career diplomat and technocrat — former Ambassador to the Scandinavian countries and Federal Permanent Secretary — leading the Pan Niger Delta Forum's national mandate from Nigeria. PANDEF Diaspora carries that same mandate abroad, working in step with his office.</p>
+</div>
 </div>
 </div>
 </section>
@@ -363,31 +200,31 @@ font-size:0.8rem; color:#7B87AA; flex-wrap:wrap; gap:12px;
 </div>
 <div class="governors-grid reveal">
 <div class="governor-card">
-<div class="governor-photo"><img src="assets/governors/akwa-ibom-umo-eno.jpg" alt="Umo Eno" style="object-position:60% 15%;"></div>
+<div class="governor-photo"><img src="assets/governors/akwa-ibom-umo-eno.jpg" alt="Umo Eno"></div>
 <h4>Umo Eno</h4><span>Governor, Akwa Ibom State</span>
 </div>
 <div class="governor-card">
-<div class="governor-photo"><img src="assets/governors/bayelsa-douye-diri.jpg" alt="Douye Diri" style="object-position:50% 20%;"></div>
+<div class="governor-photo"><img src="assets/governors/bayelsa-douye-diri.jpg" alt="Douye Diri"></div>
 <h4>Douye Diri</h4><span>Governor, Bayelsa State</span>
 </div>
 <div class="governor-card">
-<div class="governor-photo"><img src="assets/governors/rivers-siminalayi-fubara.jpg" alt="Siminalayi Fubara" style="object-position:25% 25%;"></div>
+<div class="governor-photo"><img src="assets/governors/rivers-siminalayi-fubara.jpg" alt="Siminalayi Fubara"></div>
 <h4>Siminalayi Fubara</h4><span>Governor, Rivers State</span>
 </div>
 <div class="governor-card">
-<div class="governor-photo"><img src="assets/governors/delta-sheriff-oborevwori.jpg" alt="Sheriff Oborevwori" style="object-position:45% 20%;"></div>
+<div class="governor-photo"><img src="assets/governors/delta-sheriff-oborevwori.jpg" alt="Sheriff Oborevwori"></div>
 <h4>Sheriff Oborevwori</h4><span>Governor, Delta State</span>
 </div>
 <div class="governor-card">
-<div class="governor-photo"><img src="assets/governors/edo-monday-okpebholo.jpg" alt="Monday Okpebholo" style="object-position:35% 15%;"></div>
+<div class="governor-photo"><img src="assets/governors/edo-monday-okpebholo.jpg" alt="Monday Okpebholo"></div>
 <h4>Monday Okpebholo</h4><span>Governor, Edo State</span>
 </div>
 <div class="governor-card">
-<div class="governor-photo"><img src="assets/governors/cross-river-bassey-otu.jpg" alt="Bassey Otu" style="object-position:50% 12%;"></div>
+<div class="governor-photo"><img src="assets/governors/cross-river-bassey-otu.jpg" alt="Bassey Otu"></div>
 <h4>Bassey Otu</h4><span>Governor, Cross River State</span>
 </div>
 </div>
-<p class="form-note" style="margin-top:24px;">Governors current as of July 2026 — please confirm before publishing, as state elections can change this list. Photos: official state government portraits.</p>
+<p class="form-note" style="margin-top:24px;">Governors current as of August 2026 — please confirm before publishing, as state elections can change this list. Photos: official state government portraits.</p>
 </div>
 </section>
 
@@ -417,97 +254,6 @@ font-size:0.8rem; color:#7B87AA; flex-wrap:wrap; gap:12px;
 </div>
 </section>
 
-<section class="band-paper" id="executive">
-<div class="wrap">
-<div class="section-head reveal">
-<div class="eyebrow">PDCC Executive Committee</div>
-<h2>The people running PANDEF Diaspora.</h2>
-<p>The Coordinating Council's executive officers, elected to run PANDEF Diaspora's day-to-day work.</p>
-</div>
-<div class="governors-grid reveal">
-<div class="governor-card">
-<div class="governor-photo"><img src="assets/team/festus-ofume.jpg" alt="Festus Ofume" style="object-position:50% 20%;"></div>
-<h4>Festus Ofume</h4><span>Diaspora Coordinator General</span>
-</div>
-<div class="governor-card">
-<div class="governor-photo"><img src="assets/team/lamiegha-brinemugha.jpg" alt="Lamiegha Brinemugha" style="object-position:60% 12%;"></div>
-<h4>Lamiegha Brinemugha</h4><span>Secretary General</span>
-</div>
-<div class="governor-card">
-<div class="governor-photo"><img src="assets/team/imeobong-essien.jpg" alt="Imeobong Essien" style="object-position:50% 25%;"></div>
-<h4>Imeobong Essien</h4><span>Deputy Coordinator General</span>
-</div>
-<div class="governor-card">
-<div class="governor-photo"><img src="assets/team/ufuoma-amarasa.jpg" alt="Ufuoma Amarasa" style="object-position:48% 30%;"></div>
-<h4>Ufuoma Amarasa</h4><span>Treasurer / Director of Finance</span>
-</div>
-<div class="governor-card">
-<div class="governor-photo"><img src="assets/team/prebi-brisibe.jpg" alt="Prebi Brisibe" style="object-position:50% 22%;"></div>
-<h4>Prebi Brisibe</h4><span>Director of Women Affairs</span>
-</div>
-<div class="governor-card">
-<div class="governor-photo"><img src="assets/team/slyvanus-ogbeche.jpg" alt="Slyvanus Ogbeche" style="object-position:50% 15%;"></div>
-<h4>Slyvanus Ogbeche</h4><span>Director of Media &amp; Publicity</span>
-</div>
-<div class="governor-card">
-<div class="governor-photo"><img src="assets/team/marcus-nwose.jpg" alt="Marcus Nwose" style="object-position:50% 12%;"></div>
-<h4>Marcus Nwose</h4><span>Director of Education &amp; Capacity Development</span>
-</div>
-<div class="governor-card">
-<div class="governor-photo"><img src="assets/team/aye-georgina-dakpokpo.jpg" alt="Aye Georgina Dakpokpo" style="object-position:50% 30%;"></div>
-<h4>Aye Georgina Dakpokpo</h4><span>Director, International Relations &amp; Partnerships</span>
-</div>
-<div class="governor-card">
-<div class="governor-photo"><img src="assets/team/ogulogu-obaide.jpg" alt="Ogulogu Obaide" style="object-position:50% 22%;"></div>
-<h4>Ogulogu Obaide</h4><span>Director, Legal &amp; Intergovernmental Affairs</span>
-</div>
-<div class="governor-card">
-<div class="governor-photo"><img src="assets/team/shaka-george-oboge.jpg" alt="Shaka George Oboge" style="object-position:50% 15%;"></div>
-<h4>Shaka George Oboge</h4><span>Director, Trade, Investment &amp; Economic Development</span>
-</div>
-<div class="governor-card">
-<div class="governor-photo"><img src="assets/team/kinikanwo-obasiolu.jpg" alt="Kinikanwo Obasiolu" style="object-position:60% 45%;"></div>
-<h4>Kinikanwo Obasiolu</h4><span>Director, Culture and Tourism</span>
-</div>
-<div class="governor-card">
-<div class="governor-photo"><img src="assets/team/eric-ofomukoro.jpg" alt="Eric Ofomukoro" style="object-position:58% 22%;"></div>
-<h4>Eric Ofomukoro</h4><span>Director, Humanitarian Affairs</span>
-</div>
-<div class="governor-card">
-<div class="governor-photo"><img src="assets/team/harrison-osauwagboe.jpg" alt="Harrison Osauwagboe" style="object-position:50% 15%;"></div>
-<h4>Harrison Osauwagboe</h4><span>Assistant Secretary General</span>
-</div>
-<div class="governor-card">
-<div class="governor-photo"><img src="assets/team/vivian-adeoye.jpg" alt="Vivian Adeoye" style="object-position:50% 20%;"></div>
-<h4>Vivian Adeoye</h4><span>Director, Health and Medical Mission</span>
-</div>
-<div class="governor-card">
-<div class="governor-photo"><img src="assets/team/angonimi-david-imeh.jpg" alt="Mrs Angonimi David-Imeh" style="object-position:50% 18%;"></div>
-<h4>Mrs Angonimi David-Imeh</h4><span>Nigeria Liaison Officer</span>
-</div>
-</div>
-
-<div class="section-head reveal" style="margin-top:56px; margin-bottom:32px;">
-<div class="eyebrow">Country Coordinators</div>
-<h2 style="font-size:clamp(1.4rem,2.4vw,1.9rem);">Leading PANDEF Diaspora's chapters abroad.</h2>
-</div>
-<div class="governors-grid reveal">
-<div class="governor-card">
-<div class="governor-photo"><img src="assets/team/ogulogu-obaide.jpg" alt="Ogulogu Obaide" style="object-position:50% 22%;"></div>
-<h4>Ogulogu Obaide</h4><span>Coordinator, Canada</span>
-</div>
-<div class="governor-card">
-<div class="governor-photo"><img src="assets/team/shaka-george-oboge.jpg" alt="Shaka George Oboge" style="object-position:50% 15%;"></div>
-<h4>Shaka George Oboge</h4><span>Coordinator, United States of America</span>
-</div>
-<div class="governor-card">
-<div class="governor-photo"><img src="assets/team/lamiegha-brinemugha.jpg" alt="Lamiegha Brinemugha" style="object-position:60% 12%;"></div>
-<h4>Lamiegha Brinemugha</h4><span>Coordinator, United Kingdom</span>
-</div>
-</div>
-</div>
-</section>
-
 <section class="band-cream" id="leadership">
 <div class="wrap">
 <div class="section-head reveal">
@@ -521,6 +267,65 @@ font-size:0.8rem; color:#7B87AA; flex-wrap:wrap; gap:12px;
 <li><span class="leadership-num">03</span><div><h4>Board of Trustees</h4><span>Elder statesmen and traditional rulers from across the Niger Delta states, holding final oversight and continuity of the Forum's mandate.</span></div></li>
 </ol>
 <p class="form-note" style="margin-top:28px;">Individual officer names and titles to be supplied by the National Secretariat.</p>
+</div>
+</section>
+
+<section class="band-cream" id="events">
+<div class="wrap">
+<div class="section-head reveal">
+<div class="eyebrow">What's Happening</div>
+<h2>Events.</h2>
+<p>Where PANDEF Diaspora gathers — upcoming and past.</p>
+</div>
+<div class="events-grid reveal">
+<div class="event-card event-card--featured">
+<span class="event-tag">Upcoming</span>
+<h3>PANDEF Diaspora London Summit</h3>
+<span class="event-meta">London, United Kingdom · Date to be announced</span>
+<p>A gathering of the UK chapter and the wider diaspora to chart PANDEF Diaspora's next chapter. Full details and live updates on the dedicated summit page.</p>
+<a href="london-summit.html" class="btn btn-primary" style="margin-top:22px;">View Summit Page →</a>
+</div>
+<div class="event-card">
+<span class="event-tag event-tag--muted">Coming Soon</span>
+<h3>More events</h3>
+<span class="event-meta">To be announced</span>
+<p>Upcoming chapter meetings and past gatherings will be listed here as they're confirmed.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="band-paper" id="news">
+<div class="wrap">
+<div class="section-head reveal">
+<div class="eyebrow">Stay Informed</div>
+<h2>News &amp; Updates.</h2>
+<p>Statements, press coverage and updates from PANDEF Diaspora.</p>
+</div>
+<div class="news-grid reveal">
+<div class="news-card"><span class="news-date">Coming Soon</span><h4>News and press updates will appear here.</h4></div>
+<div class="news-card"><span class="news-date">Coming Soon</span><h4>Send us a release and we'll publish it.</h4></div>
+<div class="news-card"><span class="news-date">Coming Soon</span><h4>Check back for the latest from the Council.</h4></div>
+</div>
+</div>
+</section>
+
+<section class="band-cream" id="gallery">
+<div class="wrap">
+<div class="section-head reveal">
+<div class="eyebrow">In Pictures</div>
+<h2>Gallery.</h2>
+<p>Moments from PANDEF Diaspora gatherings, chapters and community events.</p>
+</div>
+<div class="gallery-grid reveal">
+<div class="gallery-item"><svg viewBox="0 0 48 48" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="8" width="40" height="32" rx="2"/><circle cx="16" cy="18" r="3.5"/><path d="M6 34 L18 22 L26 30 L34 20 L44 32"/></svg></div>
+<div class="gallery-item"><svg viewBox="0 0 48 48" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="8" width="40" height="32" rx="2"/><circle cx="16" cy="18" r="3.5"/><path d="M6 34 L18 22 L26 30 L34 20 L44 32"/></svg></div>
+<div class="gallery-item"><svg viewBox="0 0 48 48" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="8" width="40" height="32" rx="2"/><circle cx="16" cy="18" r="3.5"/><path d="M6 34 L18 22 L26 30 L34 20 L44 32"/></svg></div>
+<div class="gallery-item"><svg viewBox="0 0 48 48" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="8" width="40" height="32" rx="2"/><circle cx="16" cy="18" r="3.5"/><path d="M6 34 L18 22 L26 30 L34 20 L44 32"/></svg></div>
+<div class="gallery-item"><svg viewBox="0 0 48 48" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="8" width="40" height="32" rx="2"/><circle cx="16" cy="18" r="3.5"/><path d="M6 34 L18 22 L26 30 L34 20 L44 32"/></svg></div>
+<div class="gallery-item"><svg viewBox="0 0 48 48" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="8" width="40" height="32" rx="2"/><circle cx="16" cy="18" r="3.5"/><path d="M6 34 L18 22 L26 30 L34 20 L44 32"/></svg></div>
+</div>
+<p class="form-note" style="margin-top:20px;">Photos coming soon — send us your event pictures to feature here.</p>
 </div>
 </section>
 
@@ -629,20 +434,24 @@ font-size:0.8rem; color:#7B87AA; flex-wrap:wrap; gap:12px;
 <h5>Explore</h5>
 <ul>
 <li><a href="#mission">Mission</a></li>
-<li><a href="#states">The Six States</a></li>
+<li><a href="#executive">Executive</a></li>
+<li><a href="#chairman">National Chairman</a></li>
 <li><a href="#governors">Governors</a></li>
 <li><a href="#structure">Structure</a></li>
-<li><a href="#executive">Executive</a></li>
 <li><a href="#leadership">Leadership</a></li>
+<li><a href="#events">Events</a></li>
+<li><a href="#news">News</a></li>
+<li><a href="#gallery">Gallery</a></li>
 <li><a href="#chapters">Chapters</a></li>
+<li><a href="london-summit.html">London Summit</a></li>
 </ul>
 </div>
 <div>
 <h5>Council</h5>
 <ul>
 <li><a href="#involve">Join</a></li>
-<li><a href="#">National Secretariat</a></li>
-<li><a href="#">Board of Trustees</a></li>
+<li><a href="#structure">National Secretariat</a></li>
+<li><a href="#structure">Board of Trustees</a></li>
 </ul>
 </div>
 <div>
